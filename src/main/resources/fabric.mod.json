@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "fastchest",
+  "version": "${version}",
+
+  "name": "FastChest",
+  "description": "Makes Chests use static models instead of BERs.",
+  "authors": [
+    "Domi"
+  ],
+  "contact": {
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/fastchest",
+    "sources": "https://github.com/FakeDomi/FastChest"
+  },
+
+  "license": "MIT",
+  "icon": "assets/fastchest/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+    ]
+  },
+  "mixins": [
+    "fc.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.7.4",
+    "minecraft": "1.16.x"
+  },
+  "suggests": {
+    "flamingo": "*"
+  }
+}
