@@ -61,11 +61,4 @@ public class Configs {
         read();
     }
 
-    private static class ConfigObject {
-        public boolean simplifiedChestRendering;
-
-        public ConfigObject(boolean b) {
-            this.simplifiedChestRendering = b;
-        }
-    }
 }
