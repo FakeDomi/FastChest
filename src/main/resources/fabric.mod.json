@@ -1,12 +1,13 @@
 {
   "schemaVersion": 1,
-  "id": "fastchest",
+  "id": "fast_chest",
   "version": "${version}",
 
   "name": "FastChest",
   "description": "Makes Chests use static models instead of BERs.",
   "authors": [
-    "Domi"
+    "Domi",
+    "eeasee"
   ],
   "contact": {
     "homepage": "https://www.curseforge.com/minecraft/mc-mods/fastchest",
@@ -19,6 +20,9 @@
   "environment": "*",
   "entrypoints": {
     "main": [
+    ],
+    "modmenu": [
+      "re.domi.fastchest.config.ModMenuImpl"
     ]
   },
   "mixins": [
@@ -26,10 +30,9 @@
   ],
 
   "depends": {
-    "fabricloader": ">=0.7.4",
-    "minecraft": "1.16.x"
+    "fabricloader": "*",
+    "minecraft": "*"
   },
   "suggests": {
-    "flamingo": "*"
   }
 }
