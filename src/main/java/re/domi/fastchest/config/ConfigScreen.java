@@ -1,35 +1,49 @@
 package re.domi.fastchest.config;
 
 import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.gui.screen.ScreenTexts;
 import net.minecraft.client.gui.widget.ButtonWidget;
+import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.LiteralText;
+import net.minecraft.text.Text;
 
 public class ConfigScreen extends Screen
 {
-    private static final String BUTTON_TEXT = "Simplified chest: ";
+    private static final Text SCREEN_TITLE = new LiteralText("FastChest config");
+    private static final Text SIMPLIFIED_ON = new LiteralText("Simplified chest: ON");
+    private static final Text SIMPLIFIED_OFF = new LiteralText("Simplified chest: OFF");
 
     private final Screen parent;
 
     ConfigScreen(Screen parent)
     {
-        super(new LiteralText("FastChest config"));
+        super(SCREEN_TITLE);
         this.parent = parent;
     }
 
     @Override
     public void init()
     {
-        this.addButton(new ButtonWidget((int)(this.width * 0.2), (int)(this.height * 0.2), 204, 20,
-            BUTTON_TEXT + Config.simplifiedChestRendering,
-            (buttonWidget) ->
+        this.addButton(new ButtonWidget(this.width / 2 - 100, 50, 200, 20,
+            Config.simplifiedChest ? SIMPLIFIED_ON : SIMPLIFIED_OFF,
+            button ->
             {
-                Config.simplifiedChestRendering = !Config.simplifiedChestRendering;
-                buttonWidget.setMessage(BUTTON_TEXT + Config.simplifiedChestRendering);
+                Config.simplifiedChest = !Config.simplifiedChest;
+                button.setMessage(Config.simplifiedChest ? SIMPLIFIED_ON : SIMPLIFIED_OFF);
                 Config.write();
 
-                if (this.minecraft != null)
+                if (this.client != null)
                 {
-                    this.minecraft.worldRenderer.reload();
+                    this.client.worldRenderer.reload();
+                }
+            }));
+
+        this.addButton(new ButtonWidget(this.width / 2 - 100, this.height - 50, 200, 20, ScreenTexts.DONE,
+            button ->
+            {
+                if (this.client != null)
+                {
+                    this.client.openScreen(this.parent);
                 }
             }));
     }
@@ -37,9 +51,9 @@ public class ConfigScreen extends Screen
     @Override
     public void onClose()
     {
-        if (this.minecraft != null)
+        if (this.client != null)
         {
-            this.minecraft.openScreen(this.parent);
+            this.client.openScreen(this.parent);
         }
     }
 
@@ -48,10 +62,11 @@ public class ConfigScreen extends Screen
     {
     }
 
-    public void render(int mouseX, int mouseY, float delta)
+    @Override
+    public void render(MatrixStack matrices, int mouseX, int mouseY, float delta)
     {
-        this.renderBackground();
-        this.drawCenteredString(this.font, this.title.asFormattedString(), this.width / 2, 5, 0xFFFFFF);
-        super.render(mouseX, mouseY, delta);
+        this.renderBackground(matrices);
+        drawCenteredString(matrices, this.textRenderer, this.title.asString(), this.width / 2, 5, 0xFFFFFF);
+        super.render(matrices, mouseX, mouseY, delta);
     }
 }

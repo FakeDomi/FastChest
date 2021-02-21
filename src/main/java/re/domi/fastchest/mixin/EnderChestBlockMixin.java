@@ -13,9 +13,9 @@ import re.domi.fastchest.config.Config;
 public class EnderChestBlockMixin
 {
     @Inject(method = "getRenderType", at = @At("HEAD"), cancellable = true)
-    private void onGetRenderType(BlockState state, CallbackInfoReturnable<BlockRenderType> cir)
+    private void getRenderType(BlockState state, CallbackInfoReturnable<BlockRenderType> cir)
     {
-        if (Config.simplifiedChestRendering)
+        if (Config.simplifiedChest)
         {
             cir.setReturnValue(BlockRenderType.MODEL);
         }

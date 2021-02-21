@@ -6,7 +6,9 @@
   "name": "FastChest",
   "description": "Makes Chests use static models instead of BERs.",
   "authors": [
-    "Domi",
+    "Domi"
+  ],
+  "contributors": [
     "eeasee"
   ],
   "contact": {
@@ -32,7 +34,7 @@
 
   "depends": {
     "fabricloader": "*",
-    "minecraft": ">=1.15"
+    "minecraft": ">=1.16"
   },
   "suggests": {
   }
