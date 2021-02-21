@@ -15,9 +15,9 @@ import re.domi.fastchest.config.Config;
 public class BlockEntityRenderDispatcherMixin
 {
     @Inject(method = "get", at = @At("HEAD"), cancellable = true)
-    private <E extends BlockEntity> void onGetRenderer(E blockEntity, CallbackInfoReturnable<@Nullable BlockEntityRenderer<E>> cir)
+    private <E extends BlockEntity> void get(E blockEntity, CallbackInfoReturnable<@Nullable BlockEntityRenderer<E>> cir)
     {
-        if (Config.simplifiedChestRendering && blockEntity instanceof ChestAnimationProgress)
+        if (Config.simplifiedChest && blockEntity instanceof ChestAnimationProgress)
         {
             cir.setReturnValue(null);
         }
