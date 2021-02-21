@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "fast_chest",
+  "id": "fastchest",
   "version": "${version}",
 
   "name": "FastChest",
@@ -11,7 +11,8 @@
   ],
   "contact": {
     "homepage": "https://www.curseforge.com/minecraft/mc-mods/fastchest",
-    "sources": "https://github.com/FakeDomi/FastChest"
+    "sources": "https://github.com/FakeDomi/FastChest",
+    "issues": "https://github.com/FakeDomi/FastChest/issues"
   },
 
   "license": "MIT",
@@ -31,7 +32,7 @@
 
   "depends": {
     "fabricloader": "*",
-    "minecraft": "*"
+    "minecraft": ">=1.15"
   },
   "suggests": {
   }

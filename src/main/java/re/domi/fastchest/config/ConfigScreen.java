@@ -4,54 +4,54 @@ import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.text.LiteralText;
 
-public class ConfigScreen extends Screen {
-    private ButtonWidget SIMPLIFIED_CHEST_OPTION;
+public class ConfigScreen extends Screen
+{
+    private static final String BUTTON_TEXT = "Simplified chest: ";
 
     private final Screen parent;
 
-    ConfigScreen(Screen parent) {
-        super(new LiteralText("Fast Chest Config"));
+    ConfigScreen(Screen parent)
+    {
+        super(new LiteralText("FastChest config"));
         this.parent = parent;
     }
 
-    private void updateState() {
-        this.SIMPLIFIED_CHEST_OPTION.setMessage("Apply simplified chest: " + Configs.simplifiedChestRendering);
-        if (this.minecraft != null) {
-            if (this.minecraft.player != null) {
-                this.minecraft.player.addChatMessage(new LiteralText("§e§l[FastChest]: §f§rYou may have to refresh rendering chunks (F3+A) to update chest rendering."), false);
-            }
-        }
+    @Override
+    public void init()
+    {
+        this.addButton(new ButtonWidget((int)(this.width * 0.2), (int)(this.height * 0.2), 204, 20,
+            BUTTON_TEXT + Config.simplifiedChestRendering,
+            (buttonWidget) ->
+            {
+                Config.simplifiedChestRendering = !Config.simplifiedChestRendering;
+                buttonWidget.setMessage(BUTTON_TEXT + Config.simplifiedChestRendering);
+                Config.write();
+
+                if (this.minecraft != null)
+                {
+                    this.minecraft.worldRenderer.reload();
+                }
+            }));
     }
 
     @Override
-    public void init() {
-        this.SIMPLIFIED_CHEST_OPTION = new ButtonWidget(
-                (int) (this.width * 0.2), (int) (this.height * 0.2), 204, 20,
-                "Apply simplified chest: " + Configs.simplifiedChestRendering,
-                (buttonWidget) -> {
-                    Configs.simplifiedChestRendering = !Configs.simplifiedChestRendering;
-                    this.updateState();
-                    Configs.write();
-                });
-        this.addButton(SIMPLIFIED_CHEST_OPTION);
-    }
-
-    @Override
-    public void onClose() {
-        if (this.minecraft != null) {
+    public void onClose()
+    {
+        if (this.minecraft != null)
+        {
             this.minecraft.openScreen(this.parent);
         }
     }
 
     @Override
-    public void removed() {
-
+    public void removed()
+    {
     }
 
-    public void render(int mouseX, int mouseY, float delta) {
+    public void render(int mouseX, int mouseY, float delta)
+    {
         this.renderBackground();
-        this.drawCenteredString(this.font, this.title.asFormattedString(), this.width / 2, 5, 16777215);
+        this.drawCenteredString(this.font, this.title.asFormattedString(), this.width / 2, 5, 0xFFFFFF);
         super.render(mouseX, mouseY, delta);
     }
-
 }

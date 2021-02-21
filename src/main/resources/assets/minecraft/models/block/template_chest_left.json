@@ -18,7 +18,7 @@
       "from": [ 1, 10, 1 ],
       "to": [ 16, 14, 15 ],
       "faces": {
-        "up": { "texture": "#chest", "uv": [ 7.25, 0, 11, 3.5 ], "rotation": 180 },
+        "up": { "texture": "#chest", "uv": [ 11, 0, 7.25, 3.5 ] },
         "north": { "texture": "#chest", "uv": [ 10.75, 3.75, 14.5, 4.75 ], "rotation": 180 },
         "south": { "texture": "#chest", "uv": [ 3.5, 3.75, 7.25, 4.75 ], "rotation": 180 },
         "west": { "texture": "#chest", "uv": [ 7.25, 3.75, 10.75, 4.75 ], "rotation": 180 }

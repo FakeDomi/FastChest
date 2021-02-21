@@ -4,18 +4,19 @@ import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ChestBlock;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import re.domi.fastchest.config.Configs;
+import re.domi.fastchest.config.Config;
 
 @Mixin(ChestBlock.class)
-public class ChestBlockMixin {
+public class ChestBlockMixin
+{
     @Inject(method = "getRenderType", at = @At("HEAD"), cancellable = true)
-    private void onGetRenderType(BlockState state, CallbackInfoReturnable<BlockRenderType> cir) {
-        if (Configs.simplifiedChestRendering) {
-            cir.setReturnValue(BlockRenderType.MODEL);
+    private void onGetRenderType(BlockState state, CallbackInfoReturnable<BlockRenderType> cir)
+    {
+        if (Config.simplifiedChestRendering)
+        {
             cir.setReturnValue(BlockRenderType.MODEL);
         }
     }
