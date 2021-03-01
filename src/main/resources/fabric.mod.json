@@ -20,7 +20,7 @@
   "license": "MIT",
   "icon": "assets/fastchest/icon.png",
 
-  "environment": "*",
+  "environment": "client",
   "entrypoints": {
     "main": [
     ],
