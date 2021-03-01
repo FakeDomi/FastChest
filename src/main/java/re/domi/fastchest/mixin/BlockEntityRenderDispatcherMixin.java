@@ -1,7 +1,9 @@
 package re.domi.fastchest.mixin;
 
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.client.block.ChestAnimationProgress;
+import net.minecraft.block.entity.ChestBlockEntity;
+import net.minecraft.block.entity.EnderChestBlockEntity;
+import net.minecraft.block.entity.TrappedChestBlockEntity;
 import net.minecraft.client.render.block.entity.BlockEntityRenderDispatcher;
 import net.minecraft.client.render.block.entity.BlockEntityRenderer;
 import org.jetbrains.annotations.Nullable;
@@ -17,9 +19,16 @@ public class BlockEntityRenderDispatcherMixin
     @Inject(method = "get", at = @At("HEAD"), cancellable = true)
     private <E extends BlockEntity> void get(E blockEntity, CallbackInfoReturnable<@Nullable BlockEntityRenderer<E>> cir)
     {
-        if (Config.simplifiedChest && blockEntity instanceof ChestAnimationProgress)
+        if (Config.simplifiedChest)
         {
-            cir.setReturnValue(null);
+            Class<?> beClass = blockEntity.getClass();
+
+            if (beClass == ChestBlockEntity.class ||
+                beClass == TrappedChestBlockEntity.class ||
+                beClass == EnderChestBlockEntity.class)
+            {
+                cir.setReturnValue(null);
+            }
         }
     }
 }
