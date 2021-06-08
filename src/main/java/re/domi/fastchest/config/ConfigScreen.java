@@ -24,7 +24,7 @@ public class ConfigScreen extends Screen
     @Override
     public void init()
     {
-        this.addButton(new ButtonWidget(this.width / 2 - 100, 50, 200, 20,
+        this.addDrawableChild(new ButtonWidget(this.width / 2 - 100, 50, 200, 20,
             Config.simplifiedChest ? SIMPLIFIED_ON : SIMPLIFIED_OFF,
             button ->
             {
@@ -38,7 +38,7 @@ public class ConfigScreen extends Screen
                 }
             }));
 
-        this.addButton(new ButtonWidget(this.width / 2 - 100, this.height - 50, 200, 20, ScreenTexts.DONE,
+        this.addDrawableChild(new ButtonWidget(this.width / 2 - 100, this.height - 50, 200, 20, ScreenTexts.DONE,
             button ->
             {
                 if (this.client != null)
@@ -61,7 +61,7 @@ public class ConfigScreen extends Screen
     public void render(MatrixStack matrices, int mouseX, int mouseY, float delta)
     {
         this.renderBackground(matrices);
-        drawCenteredString(matrices, this.textRenderer, this.title.asString(), this.width / 2, 5, 0xFFFFFF);
+        drawCenteredText(matrices, this.textRenderer, this.title.asString(), this.width / 2, 5, 0xFFFFFF);
         super.render(matrices, mouseX, mouseY, delta);
     }
 }
