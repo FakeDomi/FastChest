@@ -43,7 +43,7 @@ public class ConfigScreen extends Screen
             {
                 if (this.client != null)
                 {
-                    this.client.openScreen(this.parent);
+                    this.client.setScreen(this.parent);
                 }
             }));
     }
@@ -53,7 +53,7 @@ public class ConfigScreen extends Screen
     {
         if (this.client != null)
         {
-            this.client.openScreen(this.parent);
+            this.client.setScreen(this.parent);
         }
     }
 
