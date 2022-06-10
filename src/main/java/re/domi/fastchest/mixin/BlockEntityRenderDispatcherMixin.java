@@ -17,7 +17,7 @@ import re.domi.fastchest.config.Config;
 public class BlockEntityRenderDispatcherMixin
 {
     @Inject(method = "get", at = @At("HEAD"), cancellable = true)
-    private <E extends BlockEntity> void get(E blockEntity, CallbackInfoReturnable<@Nullable BlockEntityRenderer<E>> cir)
+    private <E extends BlockEntity> void fastchest_get(E blockEntity, CallbackInfoReturnable<@Nullable BlockEntityRenderer<E>> cir)
     {
         if (Config.simplifiedChest)
         {
@@ -25,7 +25,8 @@ public class BlockEntityRenderDispatcherMixin
 
             if (beClass == ChestBlockEntity.class ||
                 beClass == TrappedChestBlockEntity.class ||
-                beClass == EnderChestBlockEntity.class)
+                beClass == EnderChestBlockEntity.class ||
+                beClass.getSuperclass().getName().equals("io.github.cyberanner.ironchests.blocks.blockentities.GenericChestEntity"))
             {
                 cir.setReturnValue(null);
             }
