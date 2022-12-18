@@ -23,7 +23,7 @@ public class ConfigScreen extends Screen
     @Override
     public void init()
     {
-        this.addDrawableChild(new ButtonWidget(this.width / 2 - 100, 50, 200, 20,
+        this.addDrawableChild(new ButtonWidget.Builder(
             Config.simplifiedChest ? SIMPLIFIED_ON : SIMPLIFIED_OFF,
             button ->
             {
@@ -35,16 +35,21 @@ public class ConfigScreen extends Screen
                 {
                     this.client.worldRenderer.reload();
                 }
-            }));
+            })
+            .dimensions(this.width / 2 - 100, 50, 200, 20)
+            .build());
 
-        this.addDrawableChild(new ButtonWidget(this.width / 2 - 100, this.height - 50, 200, 20, ScreenTexts.DONE,
+        this.addDrawableChild(new ButtonWidget.Builder(
+            ScreenTexts.DONE,
             button ->
             {
                 if (this.client != null)
                 {
                     this.client.setScreen(this.parent);
                 }
-            }));
+            })
+            .dimensions(this.width / 2 - 100, this.height - 50, 200, 20)
+            .build());
     }
 
     @Override
