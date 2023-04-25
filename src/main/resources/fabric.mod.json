@@ -9,7 +9,8 @@
     "Domi"
   ],
   "contributors": [
-    "eeasee"
+    "eeasee",
+    "RedCarlos26"
   ],
   "contact": {
     "homepage": "https://domi.re/mc-mods/fastchest",
@@ -35,7 +36,7 @@
   "depends": {
     "fabricloader": ">=0.9.0",
     "fabric": "*",
-    "minecraft": ">=1.19.3"
+    "minecraft": ">=1.19.4"
   },
   "suggests": {
   }
