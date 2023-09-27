@@ -4,12 +4,9 @@
   "version": "${version}",
 
   "name": "FastChest",
-  "description": "Makes Chests use static models instead of BERs.",
+  "description": "Makes chests use static block models for improved performance.",
   "authors": [
     "Domi"
-  ],
-  "contributors": [
-    "eeasee"
   ],
   "contact": {
     "homepage": "https://domi.re/mc-mods/fastchest",
