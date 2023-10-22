@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import re.domi.fastchest.config.Config;
 
 @Mixin(BlockEntityRenderDispatcher.class)
-public class BlockEntityRenderDispatcherMixin
+public abstract class BlockEntityRenderDispatcherMixin
 {
     @Inject(method = "get", at = @At("HEAD"), cancellable = true)
     private <E extends BlockEntity> void fastchest_get(E blockEntity, CallbackInfoReturnable<@Nullable BlockEntityRenderer<E>> cir)
