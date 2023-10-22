@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import re.domi.fastchest.config.Config;
 
 @Mixin(ChestBlock.class)
-public class ChestBlockMixin
+public abstract class ChestBlockMixin
 {
     @Inject(method = "getRenderType", at = @At("HEAD"), cancellable = true)
     private void fastchest_getRenderType(BlockState state, CallbackInfoReturnable<BlockRenderType> cir)
