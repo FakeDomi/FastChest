@@ -7,7 +7,7 @@ import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
-@Mixin(ChestBlockEntity.class, priority = 2000)
+@Mixin(value = ChestBlockEntity.class, priority = 2000)
 public abstract class ChestBlockEntityMixin
 {
     /**
