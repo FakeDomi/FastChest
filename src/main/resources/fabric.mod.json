@@ -8,9 +8,6 @@
   "authors": [
     "Domi"
   ],
-  "contributors": [
-    "eeasee"
-  ],
   "contact": {
     "homepage": "https://domi.re/mc-mods/fastchest",
     "sources": "https://github.com/FakeDomi/FastChest",
@@ -22,21 +19,17 @@
 
   "environment": "client",
   "entrypoints": {
-    "main": [
-    ],
     "modmenu": [
       "re.domi.fastchest.config.ModMenuImpl"
     ]
   },
   "mixins": [
-    "fc.mixins.json"
+    "fastchest.mixins.json"
   ],
 
   "depends": {
     "fabricloader": ">=0.9.0",
     "fabric": "*",
     "minecraft": ">=1.19"
-  },
-  "suggests": {
   }
 }

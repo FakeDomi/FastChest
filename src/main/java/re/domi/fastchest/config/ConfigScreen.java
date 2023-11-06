@@ -1,10 +1,12 @@
 package re.domi.fastchest.config;
 
+import net.fabricmc.fabric.impl.event.lifecycle.LoadedChunksCache;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.screen.ScreenTexts;
 import net.minecraft.text.Text;
+import net.minecraft.world.chunk.WorldChunk;
 
 public class ConfigScreen extends Screen
 {
@@ -34,6 +36,11 @@ public class ConfigScreen extends Screen
                 if (this.client != null)
                 {
                     this.client.worldRenderer.reload();
+
+                    if (this.client.world != null)
+                    {
+                        ((LoadedChunksCache)this.client.world).fabric_getLoadedChunks().forEach(WorldChunk::updateAllBlockEntities);
+                    }
                 }
             }));
 
