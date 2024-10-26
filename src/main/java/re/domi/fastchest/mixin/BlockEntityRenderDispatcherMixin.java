@@ -3,7 +3,6 @@ package re.domi.fastchest.mixin;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.ChestBlockEntity;
 import net.minecraft.block.entity.EnderChestBlockEntity;
-import net.minecraft.block.entity.TrappedChestBlockEntity;
 import net.minecraft.client.render.block.entity.BlockEntityRenderDispatcher;
 import net.minecraft.client.render.block.entity.BlockEntityRenderer;
 import org.spongepowered.asm.mixin.Mixin;
@@ -20,12 +19,7 @@ public class BlockEntityRenderDispatcherMixin
     {
         if (Config.simplifiedChest)
         {
-            Class<?> beClass = blockEntity.getClass();
-
-            if (beClass == ChestBlockEntity.class ||
-                beClass == TrappedChestBlockEntity.class ||
-                beClass == EnderChestBlockEntity.class ||
-                beClass.getSuperclass().getName().equals("io.github.cyberanner.ironchests.blocks.blockentities.GenericChestEntity"))
+            if (blockEntity instanceof ChestBlockEntity || blockEntity instanceof EnderChestBlockEntity)
             {
                 cir.setReturnValue(null);
             }
