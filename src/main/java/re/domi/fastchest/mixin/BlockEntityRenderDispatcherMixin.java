@@ -9,6 +9,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+import re.domi.fastchest.FastChestTags;
 import re.domi.fastchest.config.Config;
 
 @Mixin(BlockEntityRenderDispatcher.class)
@@ -19,7 +20,7 @@ public class BlockEntityRenderDispatcherMixin
     {
         if (Config.simplifiedChest)
         {
-            if (blockEntity instanceof ChestBlockEntity || blockEntity instanceof EnderChestBlockEntity)
+            if ((blockEntity instanceof ChestBlockEntity || blockEntity instanceof EnderChestBlockEntity) && blockEntity.getType().getRegistryEntry().isIn(FastChestTags.COMPATIBLE_CHEST_BLOCK_ENTITIES))
             {
                 cir.setReturnValue(null);
             }

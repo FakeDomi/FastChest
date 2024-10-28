@@ -1,0 +1,16 @@
+{
+  "replace": false,
+  "values" : [
+    "minecraft:chest",
+    "minecraft:ender_chest",
+    "minecraft:trapped_chest",
+    { "id": "ironchest:christmas_chest", "required": false },
+    { "id": "ironchest:copper_chest", "required": false },
+    { "id": "ironchest:diamond_chest", "required": false },
+    { "id": "ironchest:emerald_chest", "required": false },
+    { "id": "ironchest:gold_chest", "required": false },
+    { "id": "ironchest:iron_chest", "required": false },
+    { "id": "ironchest:netherite_chest", "required": false },
+    { "id": "ironchest:obsidian_chest", "required": false }
+  ]
+}
