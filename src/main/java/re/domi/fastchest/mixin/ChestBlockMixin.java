@@ -1,27 +1,37 @@
 package re.domi.fastchest.mixin;
 
-import net.minecraft.block.BlockRenderType;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.ChestBlock;
+import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.block.entity.ChestBlockEntity;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import re.domi.fastchest.config.Config;
 
-@Mixin(ChestBlock.class)
-public class ChestBlockMixin
+import java.util.function.Supplier;
+
+@Mixin(value = ChestBlock.class, priority = 1500)
+public abstract class ChestBlockMixin extends AbstractChestBlock<ChestBlockEntity>
 {
-    @Inject(method = "getRenderType", at = @At("HEAD"), cancellable = true)
+    @Override
+    @Unique(silent = true)
+    protected BlockRenderType getRenderType(BlockState state)
+    {
+        return super.getRenderType(state);
+    }
+
+    @SuppressWarnings({ "MixinAnnotationTarget", "UnresolvedMixinReference" })
+    @Inject(method = {"getRenderType", "method_9604"}, at = @At("HEAD"), cancellable = true, remap = false)
     private void replaceRenderType(BlockState state, CallbackInfoReturnable<BlockRenderType> cir)
     {
-        if (Config.simplifiedChest)
+        if (!Config.simplifiedChest)
         {
-            cir.setReturnValue(BlockRenderType.MODEL);
+            cir.setReturnValue(BlockRenderType.INVISIBLE);
         }
     }
 
@@ -32,5 +42,11 @@ public class ChestBlockMixin
         {
             cir.setReturnValue(null);
         }
+    }
+
+    @SuppressWarnings({"DataFlowIssue", "unused"})
+    protected ChestBlockMixin(Settings settings, Supplier<BlockEntityType<? extends ChestBlockEntity>> entityTypeRetriever)
+    {
+        super(null, null);
     }
 }

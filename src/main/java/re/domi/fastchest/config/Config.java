@@ -5,6 +5,7 @@ import net.fabricmc.loader.api.FabricLoader;
 import java.io.*;
 import java.util.Properties;
 
+@SuppressWarnings("CallToPrintStackTrace")
 public class Config
 {
     private static final File CONFIG_FILE = new File(FabricLoader.getInstance().getConfigDir().toFile(), "fast-chest.properties");
