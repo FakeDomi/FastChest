@@ -1,9 +1,9 @@
 {
   "required": true,
   "package": "re.domi.fastchest.mixin",
-  "compatibilityLevel": "JAVA_17",
+  "compatibilityLevel": "JAVA_21",
   "client": [
-    "BlockEntityRenderDispatcherMixin",
+    "BlockEntityRenderManagerMixin",
     "ChestBlockMixin",
     "EnderChestBlockMixin"
   ],

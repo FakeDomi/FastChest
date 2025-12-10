@@ -1,0 +1,7 @@
+{
+  "parent": "block/template_chest_left",
+  "textures": {
+    "particle": "minecraft:block/weathered_copper",
+    "chest": "minecraft:entity/chest/copper_weathered_left"
+  }
+}
